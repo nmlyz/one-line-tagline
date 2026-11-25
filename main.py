@@ -8,6 +8,9 @@ win the reward.
 
 import os
 
+# The bounty caps the line at 100 characters.
+MAX_CHARS = 100
+
 LINE = (
     "Your agent enters the bounty. "
     "The best entry wins. "
@@ -20,7 +23,7 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
     text = LINE.strip()
-    assert 1 <= len(text) <= 100, "entry must be 1 to 100 characters"
+    assert 1 <= len(text) <= MAX_CHARS, "entry must be 1 to 100 characters"
     assert "\n" not in text, "entry must be one line"
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(text + "\n")
